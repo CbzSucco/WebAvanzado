@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>JQuery 27.06.17</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>	
+	 <div class="row container galeria">
+	 	<div class="col-sm-6">
+	 		<div class="panel panel-default">
+	 			<div class="panel-heading">
+	 				<h3>Nuestra Galeria</h3>
+	 				<div id="holamundo"></div>
+	 			</div>
+	 		</div> 
+	 		<div class="panel-body">
+	 			<ul class="list-inline" id="menu-galeria">
+					<li><img src="img/amazon.jpg" width="20%" alt="imagen1"></li>
+					<li><img src="img/cisco.jpg" width="20%" alt="imagen2"></li>
+					<li><img src="img/alienware.jpg" width="20%" alt="imagen3"></li>
+	 			</ul>
+	 		</div>
+	 	
+
+		<div class="panel-primary">
+			<div class="panel-heading">
+				<h3>Generador de inputs</h3>
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="">Escribe el tipo de input</label>
+				<input type="text" class="form-control" id="tipo-input">
+			</div>
+			
+			<button class="btn btn-default" id="generar-btn">Generar</button>
+		</div>
+		
+		<div clas="panel-footer">
+			<h5>Aquí se verán los inputs que generemos con jQueri</h5>
+			<div class="generados"></div>
+		</div>
+
+		</div>
+
+		</div>
+	 		
+	 		<div class="col-sm-6">
+	 				<h3>Aqui van a aparecer las imágenes de galeria</h3>
+	 			<div class="galeria">
+	 					<h6 class="glyphicon glyphicon-remove tache"></h6>
+	 					<img class="img-responsive" id="imagen-principal">
+	 			</div>
+	 		</div>
+	 
+
+	 <div class="footer">
+	 				<h4>Soy un Footer</h4>
+	 		</div>
+</body>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+		
+	<script>
+		$(document).ready( function ()
+			{
+				$("#holamundo").text("Hola Mundo desde jQuery");
+				$('body').css("background","red");
+				$('#menu-galeria li img').on("click", mostrarImagen);
+				$('.tache').on("click", ocultarImagen);
+				$('#generar-btn').on("click", generarInput);
+
+			});
+
+		function mostrarImagen(){
+			var nombre = $(this).attr('alt');
+			var direccion = 'img/' + nombre + '.jpg';
+			$('#imagen-principal').attr('src', direccion);
+			$('.galeria').show(1000);
+		}
+
+		function ocultarImagen(){
+			$('.galeria').hide(1000);
+		}
+
+		function generarInput(){
+			var tipo=$('#tipo-input').val();
+			var nuevoElemento= $('<input type="'+tipo+'">');
+			$('.generados').append(nuevoElemento);
+		}
+		</script>
+</html>
